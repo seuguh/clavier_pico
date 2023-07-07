@@ -1,0 +1,15 @@
+
+1- Remonte en lecture seule:
+	cause: débranché à la sauvage sur linux alors que des fichiers étaient ouverts, le fs est corrompu.
+	Solution: en terminal
+
+	# pour déterminer le nom (sd..) en fonction du point de montage (MOUNTPOINT):
+	lsblk 
+
+	# démonter le fs
+	sudo umount /point/de/montage
+
+	# corriger les erreurs du fs
+	sudo dosfsck -a /dev/sd..
+
+	Ensuite débrancher, rebrancher l'usb.
