@@ -1,0 +1,233 @@
+# Configuration du clavier macro RP2040
+# =====================================
+# Édité manuellement - Redémarrer le RP2040 après modification
+
+# Paramètres de base
+[settings]
+debounce = 0.1                # Anti-rebond en secondes
+long_press = 0.3              # Seuil appui long en secondes
+double_click_window = 0.3     # Fenêtre détection double-clic en secondes
+
+# Informations utilisateur
+[user]
+username = "your_name_herer"
+ssh_user = "id_ssh"
+ssh_host = "192.168.1.100"    # Votre serveur SSH
+terminal_delay = 0.5          # Délai ouverture terminal en secondes
+
+# Profil actif au démarrage
+current_profile = "default"
+
+# ============================================================
+# PROFILS - Définition des actions par touche
+# ============================================================
+# 
+# Format des raccourcis clavier: "MODIFICATEUR+TOUCHE"
+# Modificateurs disponibles:
+#   - CTRL / CONTROL
+#   - SHIFT
+#   - ALT
+#   - ALTGR / RIGHT_ALT
+#   - GUI / WIN / CMD (touche Windows/Cmd)
+#
+# Exemples:
+#   "CTRL+C"
+#   "CTRL+SHIFT+V"
+#   "ALT+F4"
+#   "GUI+D" (Windows+D = Afficher bureau)
+#
+# Types d'actions:
+#   - keycombo: Raccourci clavier (par défaut si juste une string)
+#   - text: Taper du texte (utiliser \\n pour Enter)
+#   - command: Commande spéciale (ssh, etc.)
+#
+# Format simple: short = "CTRL+C"
+# Format avancé: short = { type = "text", action = "Hello" }
+# ============================================================
+
+# -------------------- PROFIL PAR DÉFAUT --------------------
+[profiles.default.button_0]
+short = "CTRL+C"
+long = "CTRL+SHIFT+C"
+description = "Copier / Copier terminal"
+
+[profiles.default.button_1]
+short = "CTRL+V"
+long = "CTRL+SHIFT+V"
+description = "Coller / Coller terminal"
+
+[profiles.default.button_2]
+short = "CTRL+X"
+long = "CTRL+SHIFT+K"
+description = "Couper / Supprimer ligne"
+
+[profiles.default.button_3]
+short = "CTRL+Z"
+long = "CTRL+Y"
+description = "Annuler / Refaire"
+
+[profiles.default.button_4]
+short = { type = "text", action = "your_name_herer" }
+long = { type = "command", action = "ssh" }
+description = "Username / Connexion SSH"
+
+[profiles.default.button_5]
+short = "CTRL+F"
+long = "CTRL+H"
+description = "Rechercher / Remplacer"
+
+# -------------------- PROFIL VSCODE --------------------
+[profiles.vscode.button_0]
+short = "CTRL+B"              # Toggle sidebar
+long = "CTRL+SHIFT+E"         # Afficher explorateur
+description = "Sidebar / Explorer"
+
+[profiles.vscode.button_1]
+short = "CTRL+P"              # Quick open
+long = "CTRL+SHIFT+P"         # Command palette
+description = "Quick open / Palette"
+
+[profiles.vscode.button_2]
+short = "CTRL+D"              # Sélection suivante
+long = "CTRL+SHIFT+L"         # Tout sélectionner
+description = "Sélection / Tout"
+
+[profiles.vscode.button_3]
+short = "CTRL+Z"              # Undo
+long = "CTRL+SHIFT+Z"         # Redo
+description = "Undo / Redo"
+
+[profiles.vscode.button_4]
+short = "CTRL+J"              # Toggle panel
+long = "F5"                   # Debug
+description = "Panel / Debug"
+
+[profiles.vscode.button_5]
+short = "CTRL+F"              # Recherche
+long = "CTRL+SHIFT+F"         # Recherche globale
+description = "Recherche / Globale"
+
+# -------------------- PROFIL TERMINAL --------------------
+[profiles.terminal.button_0]
+short = { type = "text", action = "clear\\n" }
+long = { type = "text", action = "sudo " }
+description = "Clear / Sudo"
+
+[profiles.terminal.button_1]
+short = "CTRL+SHIFT+V"
+long = "CTRL+SHIFT+C"
+description = "Coller / Copier"
+
+[profiles.terminal.button_2]
+short = { type = "text", action = "cd ..\\n" }
+long = { type = "text", action = "ls -lah\\n" }
+description = "cd .. / ls détaillé"
+
+[profiles.terminal.button_3]
+short = "CTRL+C"              # Kill processus
+long = "CTRL+D"               # Exit
+description = "Kill / Exit"
+
+[profiles.terminal.button_4]
+short = { type = "command", action = "ssh" }
+long = { type = "text", action = "history | tail -20\\n" }
+description = "SSH / History"
+
+[profiles.terminal.button_5]
+short = { type = "text", action = "git status\\n" }
+long = { type = "text", action = "git pull\\n" }
+double = { type = "text", action = "git push\\n" }
+description = "Git status / pull / push"
+
+# -------------------- PROFIL GIT --------------------
+[profiles.git.button_0]
+short = { type = "text", action = "git status\\n" }
+long = { type = "text", action = "git log --oneline -10\\n" }
+description = "Status / Log"
+
+[profiles.git.button_1]
+short = { type = "text", action = "git add .\\n" }
+long = { type = "text", action = "git add -A\\n" }
+description = "Add . / Add all"
+
+[profiles.git.button_2]
+short = { type = "text", action = "git commit -m \"\"" }
+long = { type = "text", action = "git commit --amend\\n" }
+description = "Commit / Amend"
+
+[profiles.git.button_3]
+short = { type = "text", action = "git pull\\n" }
+long = { type = "text", action = "git pull --rebase\\n" }
+description = "Pull / Pull rebase"
+
+[profiles.git.button_4]
+short = { type = "text", action = "git push\\n" }
+long = { type = "text", action = "git push --force-with-lease\\n" }
+description = "Push / Force push"
+
+[profiles.git.button_5]
+short = { type = "text", action = "git diff\\n" }
+long = { type = "text", action = "git diff --staged\\n" }
+description = "Diff / Diff staged"
+
+# -------------------- PROFIL NAVIGATEUR WEB --------------------
+[profiles.browser.button_0]
+short = "CTRL+T"              # Nouvel onglet
+long = "CTRL+SHIFT+T"         # Rouvrir onglet fermé
+description = "Nouvel onglet / Rouvrir"
+
+[profiles.browser.button_1]
+short = "CTRL+W"              # Fermer onglet
+long = "CTRL+SHIFT+W"         # Fermer fenêtre
+description = "Fermer onglet / Fenêtre"
+
+[profiles.browser.button_2]
+short = "CTRL+TAB"            # Onglet suivant
+long = "CTRL+SHIFT+TAB"       # Onglet précédent
+description = "Suivant / Précédent"
+
+[profiles.browser.button_3]
+short = "CTRL+R"              # Refresh
+long = "CTRL+SHIFT+R"         # Hard refresh
+description = "Refresh / Hard refresh"
+
+[profiles.browser.button_4]
+short = "CTRL+L"              # Focus barre URL
+long = "CTRL+SHIFT+B"         # Toggle bookmarks
+description = "URL / Favoris"
+
+[profiles.browser.button_5]
+short = "CTRL+F"              # Recherche
+long = "CTRL+SHIFT+DELETE"    # Effacer historique
+description = "Recherche / Clear data"
+
+# -------------------- PROFIL PYTHON DEV --------------------
+[profiles.python.button_0]
+short = { type = "text", action = "#!/usr/bin/env python3\\n# -*- coding: utf-8 -*-\\n\\n" }
+long = { type = "text", action = "if __name__ == '__main__':\\n    " }
+description = "Header / Main"
+
+[profiles.python.button_1]
+short = { type = "text", action = "print()" }
+long = { type = "text", action = "import pdb; pdb.set_trace()" }
+description = "Print / Debug"
+
+[profiles.python.button_2]
+short = { type = "text", action = "def ():\\n    pass" }
+long = { type = "text", action = "class :\\n    def __init__(self):\\n        pass" }
+description = "Function / Class"
+
+[profiles.python.button_3]
+short = { type = "text", action = "try:\\n    \\nexcept Exception as e:\\n    print(e)" }
+long = { type = "text", action = "with open('', 'r') as f:\\n    " }
+description = "Try/except / With"
+
+[profiles.python.button_4]
+short = { type = "text", action = "python3 " }
+long = { type = "text", action = "pytest " }
+description = "Run / Test"
+
+[profiles.python.button_5]
+short = { type = "text", action = "pip install " }
+long = { type = "text", action = "pip freeze > requirements.txt\\n" }
+description = "Pip install / Freeze"

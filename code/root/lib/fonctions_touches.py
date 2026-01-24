@@ -37,8 +37,8 @@ keyboard_layout = KeyboardLayoutFR(keyboard)
 # ============ CONFIGURATION UTILISATEUR ============
 # Modifiez ces constantes selon vos besoins
 
-USERNAME = 'hgoussard01'
-SSH_USER = 'hugues.goussard'
+USERNAME = 'your_name_herer'
+SSH_USER = 'prenom.nom'
 SSH_HOST = ''  # À compléter avec l'adresse du serveur
 
 TERMINAL_OPEN_DELAY = 0.5  # secondes d'attente pour l'ouverture du terminal
